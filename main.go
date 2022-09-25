@@ -82,8 +82,8 @@ func initMonitoring() {
 	fmt.Println(resp)
 
 	if resp.StatusCode == 200 {
-		fmt.Println("Site", site, "foi carregado com sucesso!")
+		fmt.Println("Site", site, "successfully loaded!")
 	} else {
-		fmt.Println("Site", site, "está com problemas. Status code", resp.StatusCode)
+		fmt.Println("Site", site, "has error. Status code", resp.StatusCode)
 	}
 }
