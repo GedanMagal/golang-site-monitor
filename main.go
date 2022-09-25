@@ -24,25 +24,27 @@ func main() {
 
 	displayIntroduction()
 
-	displayMenu()
+	for {
+		displayMenu()
 
-	command := readCommand()
+		command := readCommand()
 
-	switch command {
-	case 1:
-		initMonitoring()
-		break
-	case 2:
-		fmt.Println("Displaying logs...")
-		break
-	case 0:
-		fmt.Println("Leaving the program...")
-		os.Exit(0)
-		break
-	default:
-		fmt.Println("Command not found")
-		os.Exit(-1)
-		break
+		switch command {
+		case 1:
+			initMonitoring()
+			break
+		case 2:
+			fmt.Println("Displaying logs...")
+			break
+		case 0:
+			fmt.Println("Leaving the program...")
+			os.Exit(0)
+			break
+		default:
+			fmt.Println("Command not found")
+			os.Exit(-1)
+			break
+		}
 	}
 }
 
@@ -73,7 +75,15 @@ func readCommand() int {
 func initMonitoring() {
 	fmt.Println("Monitoring...")
 
-	site := "http://patorjk.com"
+	// site := "http://patorjk.com"
+	site := "https://random-status-code.herokuapp.com"
+
 	resp, _ := http.Get(site)
 	fmt.Println(resp)
+
+	if resp.StatusCode == 200 {
+		fmt.Println("Site", site, "foi carregado com sucesso!")
+	} else {
+		fmt.Println("Site", site, "está com problemas. Status code", resp.StatusCode)
+	}
 }
