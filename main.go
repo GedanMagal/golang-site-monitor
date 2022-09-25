@@ -73,7 +73,7 @@ func readCommand() int {
 func initMonitoring() {
 	fmt.Println("Monitoring...")
 
-	site := "http://www.alura.com.br"
+	site := "http://patorjk.com"
 	resp, _ := http.Get(site)
 	fmt.Println(resp)
 }
