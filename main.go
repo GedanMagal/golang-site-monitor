@@ -79,16 +79,7 @@ func initMonitoring() {
 	sites := []string{"http://patorjk.com", "https://random-status-code.herokuapp.com"}
 
 	for _, site := range sites {
-		fmt.Println("Site:", site)
-
-		resp, _ := http.Get(site)
-		fmt.Println(resp)
-
-		if resp.StatusCode == 200 {
-			fmt.Println(site, "successfully loaded!")
-		} else {
-			fmt.Println(site, "has error. Status code", resp.StatusCode)
-		}
+		verifySiteStatus(site)
 	}
 }
 
@@ -108,4 +99,17 @@ func testSliceCapacity() {
 	nomes = append(nomes, "Teste 2", "teste 3")
 	fmt.Println("Length:", len(nomes), "capacity:", cap(nomes))
 	fmt.Println(nomes)
+}
+
+func verifySiteStatus(site string) {
+	fmt.Println("Site:", site)
+
+	resp, _ := http.Get(site)
+	fmt.Println(resp)
+
+	if resp.StatusCode == 200 {
+		fmt.Println(site, "successfully loaded!")
+	} else {
+		fmt.Println(site, "has error. Status code", resp.StatusCode)
+	}
 }
