@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"reflect"
 )
 
 const introductionApplicationName = `
@@ -86,4 +87,22 @@ func initMonitoring() {
 	} else {
 		fmt.Println("Site", site, "has error. Status code", resp.StatusCode)
 	}
+}
+
+func getNames() []string {
+
+	return []string{"Testando", "teste2"}
+}
+
+func testSliceCapacity() {
+	nomes := getNames()
+
+	fmt.Println("Lenght:", len(nomes), "capacity:", cap(nomes))
+
+	fmt.Println(reflect.TypeOf(nomes))
+	fmt.Println(nomes)
+
+	nomes = append(nomes, "Teste 2", "teste 3")
+	fmt.Println("Lenght:", len(nomes), "capacity:", cap(nomes))
+	fmt.Println(nomes)
 }
