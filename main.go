@@ -76,16 +76,19 @@ func readCommand() int {
 func initMonitoring() {
 	fmt.Println("Monitoring...")
 
-	// site := "http://patorjk.com"
-	site := "https://random-status-code.herokuapp.com"
+	sites := []string{"http://patorjk.com", "https://random-status-code.herokuapp.com"}
 
-	resp, _ := http.Get(site)
-	fmt.Println(resp)
+	for _, site := range sites {
+		fmt.Println("Site:", site)
 
-	if resp.StatusCode == 200 {
-		fmt.Println("Site", site, "successfully loaded!")
-	} else {
-		fmt.Println("Site", site, "has error. Status code", resp.StatusCode)
+		resp, _ := http.Get(site)
+		fmt.Println(resp)
+
+		if resp.StatusCode == 200 {
+			fmt.Println(site, "successfully loaded!")
+		} else {
+			fmt.Println(site, "has error. Status code", resp.StatusCode)
+		}
 	}
 }
 
@@ -97,12 +100,12 @@ func getNames() []string {
 func testSliceCapacity() {
 	nomes := getNames()
 
-	fmt.Println("Lenght:", len(nomes), "capacity:", cap(nomes))
+	fmt.Println("Length:", len(nomes), "capacity:", cap(nomes))
 
 	fmt.Println(reflect.TypeOf(nomes))
 	fmt.Println(nomes)
 
 	nomes = append(nomes, "Teste 2", "teste 3")
-	fmt.Println("Lenght:", len(nomes), "capacity:", cap(nomes))
+	fmt.Println("Length:", len(nomes), "capacity:", cap(nomes))
 	fmt.Println(nomes)
 }
