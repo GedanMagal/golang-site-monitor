@@ -61,7 +61,7 @@ func displayIntroduction() {
 
 	nome := "Gedan"
 	versao := 1.1
-	fmt.Println("Olá, sr.", nome)
+	fmt.Println("Olá,", nome)
 	fmt.Println("Current program version:", versao)
 }
 
