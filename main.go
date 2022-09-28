@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"os"
 	"reflect"
+	"time"
 )
 
 const introductionApplicationName = `
@@ -78,9 +79,16 @@ func initMonitoring() {
 
 	sites := []string{"http://patorjk.com", "https://random-status-code.herokuapp.com"}
 
-	for _, site := range sites {
-		verifySiteStatus(site)
+	for i := 0; i < 5; i++ {
+
+		fmt.Println("")
+		for _, site := range sites {
+			verifySiteStatus(site)
+		}
+		time.Sleep(5 * time.Minute)
 	}
+	fmt.Println("______________________________________________________________")
+	fmt.Println("")
 }
 
 func getNames() []string {
