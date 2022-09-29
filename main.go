@@ -22,6 +22,8 @@ const introductionApplicationName = `
 
 `
 
+const siteTimeLimit = 5
+
 func main() {
 
 	displayIntroduction()
@@ -79,7 +81,7 @@ func initMonitoring() {
 
 	sites := []string{"http://patorjk.com", "https://random-status-code.herokuapp.com"}
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < siteTimeLimit; i++ {
 
 		fmt.Println("")
 		for _, site := range sites {
